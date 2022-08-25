@@ -1,7 +1,7 @@
-import firebase from 'firebase/app'
-import 'firebase/auth'
+import firebase from 'firebase/compat/app'
+import 'firebase/compat/auth'
 
-const firebaseConfig = firebase.initializeApp({
+const app = firebase.initializeApp({
     apiKey: "AIzaSyCQzsuCC-HXL7K1u-Y6HfF47Q9V2QtR8qo",
     authDomain: "auth-proj-b7759.firebaseapp.com",
     projectId: "auth-proj-b7759",
