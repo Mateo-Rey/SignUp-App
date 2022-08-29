@@ -22,9 +22,9 @@ export default function Dashboard() {
   return (
     <>
       <div className="app">
-        <div className="profile">
-          <Card>
-            <Card.Body>
+        <div className="header">
+          <Card className="profile-frame">
+            <Card.Body className="profile-body">
               <h2 className="text-center mb-4">Profile</h2>
               {error && <Alert variant="danger">{error}</Alert>}
               <strong>Email:</strong> {currentUser.email}
@@ -42,6 +42,7 @@ export default function Dashboard() {
               </Button>
             </div>
           </Card>
+          <div>Search</div>
         </div>
         <div>
           <Card className="outer-project-frame">
