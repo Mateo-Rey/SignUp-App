@@ -1,3 +1,74 @@
+
+div.app {
+    margin: 0px;
+    padding: 0;
+    box-sizing: inherit;
+    display: flex;
+
+}
 Button {
     margin-top: 10px;
+}
+
+div.profile {
+    position: absolute;
+    top: 20px;
+    right: 5vw;
+    width: 400px;
+    height: 100px;
+}
+
+Button.log-out {
+    background-color: #0d6efd;
+    margin-bottom: 10px;
+    color: white
+
+}
+
+.outer-project-frame {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 85vw;
+    height: 100vh;
+    flex-grow: 10;
+    padding: 20px;
+    position: absolute;
+    left: 10vw;
+    top: 40vh;
+    margin-top: 5px;
+}
+
+.project-board {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: top;
+    justify-content: space-around;
+    width: 85vw;
+    height: 100vh;
+    flex-grow: 10;
+    padding: 20px;
+    position: absolute;
+    top: 5vh;
+    margin-top: 25px;
+    
+}
+
+.singular-project {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    overflow: scroll;
+    font-size: small;
+}
+
+.project-frame {
+    width: 40vw;
+    height: 200px;
+    margin: 5px;
 }
