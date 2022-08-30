@@ -24,7 +24,7 @@ export default function Login() {
   }
   return (
     <>
-        <Card className="card-container border-b-4 border-gray-light">
+        <Card className="login-body card-container text-white border-transparent">
           <Card.Body>
             <h2 className="text-center mb-4">Login</h2>
             {error && <Alert variant="danger">{error}</Alert>}
@@ -39,7 +39,7 @@ export default function Login() {
               </Form.Group>
               <button
                 disabled={loading}
-                className=" w-100 bg-blue text-white font-bold py-2 px-4 border-b-4 border-gray-light hover:border-gray rounded-3"
+                className="mt-3 w-100 bg-blue text-white font-bold py-2 px-4 border-b-4 border-gray-light hover:border-gray rounded-3"
                 type="submit"
               >
                 Login

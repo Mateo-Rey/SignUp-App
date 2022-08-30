@@ -45,7 +45,7 @@ export default function Signup() {
               <Form.Label>Password Confirmation</Form.Label>
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
-            <button disabled={loading} className=" w-100 bg-blue text-white font-bold py-2 px-4 border-b-4 border-gray-light hover:border-gray rounded-3" type="submit">
+            <button disabled={loading} className="mt-3 w-100 bg-blue text-white font-bold py-2 px-4 border-b-4 border-gray-light hover:border-gray rounded-3" type="submit">
               Sign Up
             </button>
           </Form>

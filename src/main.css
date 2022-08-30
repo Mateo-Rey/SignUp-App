@@ -2,100 +2,118 @@
 @tailwind components;
 @tailwind utilities;
 body {
-    margin: 0;  
-    background: linear-gradient(270deg,#4A6D7C,slategrey, black);
-      background-size: 200% 200%;
-      animation: gradient 12s ease infinite;
-      height: 80vh;
-  }
-  
-  @keyframes gradient {
-      0% {
-          background-position: 0% 50%;
-      }
-      50% {
-          background-position: 100% 50%;
-      }
-      100% {
-          background-position: 0% 50%;
-      }
-  }
-div.app {
-    margin: 10px;
-    padding: 0px;
-    box-sizing: inherit;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
+    margin: 0;
+
+  background-color: rgb(148, 163, 184);
+  background-image: radial-gradient(
+      at 2% 49%,
+      rgb(2, 132, 199) 0,
+      transparent 89%
+    ),
+    radial-gradient(at 11% 48%, rgb(107, 33, 168) 0, transparent 69%),
+    radial-gradient(at 2% 10%, rgb(148, 163, 184) 0, transparent 45%),
+    radial-gradient(at 35% 44%, rgb(168, 85, 247) 0, transparent 17%);
+
+  background-size: 200% 200%;
+  height: 80vh;
 }
-Button {
-    margin-top: 10px;
+.login-body {
+  margin: 0;
+
+  background-color: rgb(148, 163, 184);
+  background-image: radial-gradient(
+      at 2% 49%,
+      rgb(2, 132, 199) 0,
+      transparent 89%
+    ),
+    radial-gradient(at 11% 48%, rgb(107, 33, 168) 0, transparent 69%),
+    radial-gradient(at 2% 10%, rgb(148, 163, 184) 0, transparent 45%),
+    radial-gradient(at 35% 44%, rgb(168, 85, 247) 0, transparent 17%);
+
+  background-size: 200% 200%;
+  animation: gradient 10s ease infinite;
+  height: 80vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 100%;
+  }
+  50% {
+    background-position: 150% 100%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+div.app {
+  margin: 10px;
+  padding: 0px;
+  box-sizing: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 }
 
 div.header {
-    height: 125px;
-    margin: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+  height: 125px;
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .profile-frame {
-    display: flex;
-    margin-left: 20px;
-    margin-bottom: 20px;
+  display: flex;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  width: 30vw;
 }
 .profile-body {
-    display: flex;
-    flex-direction: column;
-    height: 200px;
-}
-Button.log-out {
-    background-color: #0d6efd;
-    margin-bottom: 10px;
-    color: white
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 200px;
 }
 
 .outer-project-frame {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 85vw;
-    flex-grow: 10;
-    padding: 20px;
-    margin-top: 150px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 85vw;
+  flex-grow: 10;
+  padding: 20px;
+  margin-top: 150px;
 }
 
 .project-board {
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: top;
-    justify-content: space-around;
-    width: 85vw;
-    height: 100vh;
-    flex-grow: 10;
-    padding: 20px;
-    margin-top: 25px;
-    
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: top;
+  justify-content: space-around;
+  width: 85vw;
+  height: 100vh;
+  flex-grow: 10;
+  padding: 20px;
+  margin-top: 25px;
 }
 
 .singular-project {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    height: 100px;
-    overflow: scroll;
-    font-size: small;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  overflow: scroll;
+  font-size: small;
 }
 
 .project-frame {
-    width: 40vw;
-    height: 200px;
-    margin: 5px;
+  width: 40vw;
+  height: 200px;
+  margin: 5px;
 }

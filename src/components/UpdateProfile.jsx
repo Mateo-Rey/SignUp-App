@@ -31,7 +31,7 @@ export default function UpdateProfile() {
 
     Promise.all(promises)
       .then(() => {
-        history.push('/')
+        history('/')
       })
       .catch(() => {
         setError("Failed to update account")
@@ -71,9 +71,9 @@ export default function UpdateProfile() {
                 ref={passwordConfirmRef}
               />
             </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
+            <button disabled={loading} className=" w-100 bg-blue text-white font-bold py-2 px-4 border-b-4 border-gray-light hover:border-gray rounded-3" type="submit">
               Update
-            </Button>
+            </button>
           </Form>
         </Card.Body>
       </Card>

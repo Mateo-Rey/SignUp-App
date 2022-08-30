@@ -28,18 +28,14 @@ export default function Dashboard() {
               <h2 className="text-center mb-4">Profile</h2>
               {error && <Alert variant="danger">{error}</Alert>}
               <strong>Email:</strong> {currentUser.email}
-              <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
+              <Link to="/update-profile" className="updbtn w-70 bg-blue text-white text-center font-bold py-2 px-4 border-b-4 border-gray-light hover:border-gray rounded-3">
                 Update Profile
               </Link>
             </Card.Body>
             <div className="w-100 text-center mt-2">
-              <Button
-                className="log-out"
-                variant="navigate"
-                onClick={handleLogout}
-              >
-                Log Out
-              </Button>
+            <button onClick={handleLogout} className="mb-3 w-60 bg-blue text-white font-bold py-2 px-4 border-b-4 border-gray-light hover:border-gray rounded-3" type="submit">
+              Logout
+            </button>
             </div>
           </Card>
           <Card>
