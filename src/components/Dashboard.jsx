@@ -42,7 +42,8 @@ export default function Dashboard() {
               </Button>
             </div>
           </Card>
-          <div>Search</div>
+          <Card>
+          </Card>
         </div>
         <div>
           <Card className="outer-project-frame">

@@ -28,6 +28,7 @@ export default function ForgotPassword() {
 
   return (
     <>
+    
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Password Reset</h2>
@@ -38,17 +39,19 @@ export default function ForgotPassword() {
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
+            <button disabled={loading} className="w-100 bg-blue text-white font-bold py-2 px-4 border-b-4 border-gray-light hover:border-gray rounded-3" type="submit">
               Reset Password
-            </Button>
+            </button>
           </Form>
           <div className="w-100 text-center mt-3">
             <Link to="/login">Login</Link>
           </div>
         </Card.Body>
       </Card>
+      <div className="text-white">
       <div className="w-100 text-center mt-2">
         Need an account? <Link to="/signup">Sign Up</Link>
+      </div>
       </div>
     </>
   )
