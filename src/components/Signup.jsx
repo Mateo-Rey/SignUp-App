@@ -29,8 +29,8 @@ export default function Signup() {
   return (
     <>
       <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Sign Up</h2>
+        <Card.Body className="login-body border-b-4 border-white text-white">
+          <h2 className="text-center text-xl mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">

@@ -51,23 +51,12 @@ div.app {
   padding: 0px;
   box-sizing: inherit;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-}
-
-div.header {
-  height: 125px;
-  margin: 20px;
-  display: flex;
-  flex-wrap: wrap;
+  align-items: flex-start;
   flex-direction: row;
 }
 
 .profile-frame {
   display: flex;
-  margin-left: 20px;
-  margin-bottom: 20px;
   width: 30vw;
 }
 .profile-body {
@@ -82,7 +71,7 @@ div.header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   width: 85vw;
   flex-grow: 10;
   padding: 20px;
@@ -95,12 +84,11 @@ div.header {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: top;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 85vw;
   height: 100vh;
   flex-grow: 10;
   padding: 20px;
-  margin-top: 25px;
 }
 
 .singular-project {

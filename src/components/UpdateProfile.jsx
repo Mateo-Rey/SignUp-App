@@ -43,8 +43,8 @@ export default function UpdateProfile() {
 
   return (
     <>
-      <Card>
-        <Card.Body>
+      <Card >
+        <Card.Body >
           <h2 className="text-center mb-4">Update Profile</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
@@ -77,7 +77,7 @@ export default function UpdateProfile() {
           </Form>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">
+      <div className="w-100 text-white text-center mt-2">
         <Link to="/">Cancel</Link>
       </div>
     </>
