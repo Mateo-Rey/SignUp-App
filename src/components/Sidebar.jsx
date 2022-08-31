@@ -1,6 +1,6 @@
 export default function Sidebar({handleLogout}) {
     return (
-        <div className="flex position-absolute top-1 left-0">
+        <div className="flex position-absolute top-1 left-0 text-white">
             <div className="flex flex-col h-screen p-3 bg-gray-800 shadow w-60">
                 <div className="space-y-3">
                     <div className="flex items-center">

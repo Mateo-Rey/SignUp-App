@@ -3,7 +3,6 @@ import { Card, Button, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import '../main.css'
 
 export default function Dashboard() {
   const [error, setError] = useState("");
@@ -27,7 +26,7 @@ export default function Dashboard() {
           {error && <Alert variant="danger">{error}</Alert>}
         <Sidebar handleLogout={handleLogout} error={error} />
         <div className="">
-          <Card className="outer-project-frame position-absolute left-100px bg-blue text-white border-b-4 border-r-4 border-white">
+          <Card className="outer-project-frame position-absolute bg-blue text-white border-b-4 border-r-4 border-white">
             <h2 className="text-xl">Welcome, UserName</h2>
             <Card.Body className="project-board ">
               <Card className="project-frame border-3 bg-transparent">

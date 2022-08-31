@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 body {
     margin: 0;
 
@@ -72,10 +73,12 @@ div.app {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  width: 85vw;
+  width: 70vw;
   flex-grow: 10;
   padding: 20px;
   margin-top: 150px;
+  position: absolute;
+  left: 300px
 }
 
 .project-board {
@@ -101,7 +104,7 @@ div.app {
 }
 
 .project-frame {
-  width: 40vw;
+  width: 30vw;
   height: 200px;
   margin: 5px;
 }
