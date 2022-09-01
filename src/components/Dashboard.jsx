@@ -8,13 +8,31 @@ import { Project } from "./Project";
 export default function Dashboard() {
   const [error, setError] = useState("");
   const { currentUser, logout } = useAuth();
+  const [getProject, setGetProject] = useState(false)
+  const userId = 4;
+  const projectId = "l4wEImA53wUhOwmeEAKh";
   const history = useNavigate();
-  const AddProject = ( ) => {
+  
     useEffect(() => {
-      fetch()
-      
-    },[])
-  }
+      const handleGetFetch = () => {
+        fetch(
+          `https://todo-api-web.web.app/projects/${userId}/${projectId}`
+        )
+        .then((res) =>res.json())
+        .then((data) => console.log(data))  
+        .catch((err)=>console.log(err))
+      };
+      handleGetFetch();
+    }, [getProject])
+  useEffect(() => {
+    const AddProject = () => {
+      fetch(`todo-api-web.web.app/add-project/${userId}`).then();
+    };
+  }, []);
+  
+  
+  
+
 
   async function handleLogout() {
     setError("");
@@ -33,8 +51,10 @@ export default function Dashboard() {
         {error && <Alert variant="danger">{error}</Alert>}
         <Sidebar handleLogout={handleLogout} error={error} />
         <div className="hero">
-          <div className="tab-bar w-100px bg-blue background-re h-100px visible">
-            <button className="add-project"></button>
+          <div className="tab-bar w-100px bg-blue h-100px visible">
+            <button onClick={() => {
+              setGetProject(true);
+            }} className="add-project w-100 bg-yellow h-h-100">hey</button>
             <button className="update-project"></button>
             <button className="search-bar"></button>
           </div>
@@ -43,12 +63,12 @@ export default function Dashboard() {
           <Card className="outer-project-frame position-absolute bg-blue text-white border-b-4 border-r-4 border-white">
             <h2 className="text-xl">Welcome, Strawberry</h2>
             <Card.Body className="project-board ">
-              <Project/>
-              <Project/>
-              <Project/>
-              <Project/>
-              <Project/>
-              <Project/>
+              <Project />
+              <Project />
+              <Project />
+              <Project />
+              <Project />
+              <Project />
             </Card.Body>
           </Card>
         </div>
