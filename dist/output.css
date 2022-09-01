@@ -549,17 +549,8 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.absolute {
-  position: absolute;
-}
-
-.relative {
-  position: relative;
-}
-
-.inset-y-0 {
-  top: 0px;
-  bottom: 0px;
+.visible {
+  visibility: visible;
 }
 
 .top-1 {
@@ -568,10 +559,6 @@ video {
 
 .left-0 {
   left: 0px;
-}
-
-.bottom-4 {
-  bottom: 1rem;
 }
 
 .mb-4 {
@@ -586,8 +573,16 @@ video {
   margin-top: 0.5rem;
 }
 
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
 .flex {
   display: flex;
+}
+
+.h-10 {
+  height: 2.5rem;
 }
 
 .h-screen {
@@ -598,16 +593,16 @@ video {
   height: 1.5rem;
 }
 
+.w-10 {
+  width: 2.5rem;
+}
+
 .w-60 {
   width: 15rem;
 }
 
 .w-6 {
   width: 1.5rem;
-}
-
-.w-full {
-  width: 100%;
 }
 
 .flex-1 {
@@ -640,12 +635,12 @@ video {
   margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.rounded-md {
-  border-radius: 0.375rem;
-}
-
 .rounded-sm {
   border-radius: 0.125rem;
+}
+
+.rounded-md {
+  border-radius: 0.375rem;
 }
 
 .border-4 {
@@ -695,15 +690,6 @@ video {
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
-}
-
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-.pl-10 {
-  padding-left: 2.5rem;
 }
 
 .pt-2 {
@@ -829,10 +815,12 @@ div.app {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  width: 85vw;
+  width: 70vw;
   flex-grow: 10;
   padding: 20px;
   margin-top: 150px;
+  position: absolute;
+  left: 300px
 }
 
 .project-board {
@@ -858,7 +846,7 @@ div.app {
 }
 
 .project-frame {
-  width: 40vw;
+  width: 30vw;
   height: 200px;
   margin: 5px;
 }
@@ -866,9 +854,4 @@ div.app {
 .hover\:border-gray:hover {
   --tw-border-opacity: 1;
   border-color: rgb(132 146 166 / var(--tw-border-opacity));
-}
-
-.focus\:outline-none:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
 }
