@@ -7,32 +7,27 @@ import { Project } from "./Project";
 
 export default function Dashboard() {
   const [error, setError] = useState("");
+  const [projectData, setProjectData] = useState([]);
   const { currentUser, logout } = useAuth();
-  const [getProject, setGetProject] = useState(false)
+  const [getProject, setGetProject] = useState(false);
   const userId = 4;
   const projectId = "l4wEImA53wUhOwmeEAKh";
   const history = useNavigate();
-  
-    useEffect(() => {
-      const handleGetFetch = () => {
-        fetch(
-          `https://todo-api-web.web.app/projects/${userId}/${projectId}`
-        )
-        .then((res) =>res.json())
-        .then((data) => console.log(data))  
-        .catch((err)=>console.log(err))
-      };
-      handleGetFetch();
-    }, [getProject])
+
+  useEffect(() => {
+    const handleGetFetch = () => {
+      fetch(`https://todo-api-web.web.app/projects/${userId}`)
+        .then((res) => res.json())
+        .then((data) => setProjectData(data))
+        .catch((err) => console.log(err));
+    };
+    handleGetFetch();
+  }, [getProject]);
   useEffect(() => {
     const AddProject = () => {
       fetch(`todo-api-web.web.app/add-project/${userId}`).then();
     };
   }, []);
-  
-  
-  
-
 
   async function handleLogout() {
     setError("");
@@ -45,16 +40,26 @@ export default function Dashboard() {
     }
   }
 
+ 
+  
   return (
     <>
+      {projectData && projectData.map((e) => {
+    return <li>{e.userId}</li>
+  })}
       <div className="app">
         {error && <Alert variant="danger">{error}</Alert>}
         <Sidebar handleLogout={handleLogout} error={error} />
         <div className="hero">
           <div className="tab-bar w-100px bg-blue h-100px visible">
-            <button onClick={() => {
-              setGetProject(true);
-            }} className="add-project w-100 bg-yellow h-h-100">hey</button>
+            <button
+              onClick={() => {
+                setGetProject(true);
+              }}
+              className="add-project w-100 bg-yellow h-h-100"
+            >
+              hey
+            </button>
             <button className="update-project"></button>
             <button className="search-bar"></button>
           </div>
