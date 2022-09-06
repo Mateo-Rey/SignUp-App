@@ -9,21 +9,21 @@ export default function Dashboard() {
   const [show, setShow] = useState(false);
   const [count, setCount] = useState(0);
   const [dataInit, setDataInit] = useState(false);
-  const userId = 1;
-
   const [form, setForm] = useState({});
-  const [newTask, setNewTask] = useState([{id: ''}]);
+  const [taskList, setTaskList] = useState({});
+  const [newTask, setNewTask] = useState([{ id: "" }]);
   const [projectData, setProjectData] = useState([]);
   const [addProject, setAddProject] = useState();
   const { currentUser, logout } = useAuth();
   const [updateProject, setUpdateProject] = useState();
-
+  const userId = currentUser.uid;
   const projectId = "l4wEImA53wUhOwmeEAKh";
   const history = useNavigate();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   async function docAdd() {
+    setForm()
     try {
       const results = await fetch(
         `https://todo-api-web.web.app/add-project/${userId}`,
@@ -59,28 +59,29 @@ export default function Dashboard() {
   }
 
   const addTask = (index) => {
-    
     if (newTask.length < 1) {
-      return setNewTask({id:`${index}`})
-    }else {
-     setCount(count+1)
-    return setNewTask([...newTask, {id:`${index}`}]);
+      return setNewTask({ id: `${index}` });
+    } else {
+      setCount(count + 1);
+      return setNewTask([...newTask, { id: `${index}` }]);
     }
-    
   };
-
+  const handleTaskChange = (event) => {
+    setTaskList({ ...taskList, [event.target.name]: event.target.value });
+  }
   const handleChange = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
 
   console.log(form);
-  
+  console.log(taskList);
 
   const handleSubmit = (e) => {
+    setForm({ [userId]: userId, ...form});
     e.preventDefault();
     docAdd(e);
   };
-  console.log(newTask)
+  console.log(newTask);
   return (
     <>
       <div className="app">
@@ -107,19 +108,6 @@ export default function Dashboard() {
                   className="flex justify-content-between align-items-flex-start flex-md-column"
                   onSubmit={(e) => e.preventDefault}
                 >
-                  <Form.Group>
-                    <Form.Label>User Id</Form.Label>
-                    <Form.Control
-                      onChange={handleChange}
-                      value={form.name}
-                      name="uuid"
-                      type="text"
-                      placeholder="Enter email..."
-                    />
-                    <Form.Text className="text-muted">
-                      We'll never share your email with anyone else.
-                    </Form.Text>
-                  </Form.Group> 
                   <Form.Group className="mb-3">
                     <Form.Label className="">Project Title</Form.Label>
                     <Form.Control
@@ -135,8 +123,7 @@ export default function Dashboard() {
                       <Form.Group>
                         <Form.Label>Project Task</Form.Label>
                         <Form.Control
-            
-                          onChange={(e) => handleChange(e,index)}
+                          onChange={(e) => handleChange(e, index)}
                           type="text"
                           key={index}
                           value={form.name}
@@ -184,17 +171,12 @@ export default function Dashboard() {
             <Card.Body className="project-board ">
               {projectData &&
                 projectData.map((doc) => {
-                  console.log(doc.activityList);
-                  let taskList = doc.activityList;
+                  console.log(doc)
+                  console.log(doc)
                   return (
                     <Card className="project-frame border-3 bg-transparent">
                       <Card.Body className="singular-project leading-7 bg-tapue-gray border-4 border-white">
-                        <h3>{doc.projectTitle}</h3>
-                        {taskList &&
-                          taskList.map((doc) => {
-                            return <p>{doc}</p>;
-                          })}
-                        <p>{doc.userId}</p>
+                        
                       </Card.Body>
                     </Card>
                   );
