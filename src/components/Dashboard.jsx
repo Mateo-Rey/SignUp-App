@@ -8,26 +8,39 @@ import { Project } from "./Project";
 export default function Dashboard() {
   const [error, setError] = useState("");
   const [projectData, setProjectData] = useState([]);
+  const [addProject, setAddProject] = useState();
   const { currentUser, logout } = useAuth();
-  const [getProject, setGetProject] = useState(false);
-  const userId = 4;
+  const [updateProject, setUpdateProject] = useState();
+  const userId = 1;
   const projectId = "l4wEImA53wUhOwmeEAKh";
   const history = useNavigate();
 
-  useEffect(() => {
-    const handleGetFetch = () => {
-      fetch(`https://todo-api-web.web.app/projects/${userId}`)
-        .then((res) => res.json())
-        .then((data) => setProjectData(data))
-        .catch((err) => console.log(err));
-    };
-    handleGetFetch();
-  }, [getProject]);
-  useEffect(() => {
-    const AddProject = () => {
-      fetch(`todo-api-web.web.app/add-project/${userId}`).then();
-    };
-  }, []);
+  const handleGetFetch = () => {
+    fetch(`https://todo-api-web.web.app/projects/${userId}`)
+      .then((res) => res.json())
+      .then((data) => setProjectData(data))
+      .catch((err) => console.log(err));
+  };
+
+  async function docAdd() {
+    try {
+      const results = await fetch(
+        `todo-api-web.web.app/add-project/${userId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(),
+        }
+      );
+      const data = results.json(addProject);
+      window.location.reload(false);
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   async function handleLogout() {
     setError("");
@@ -40,28 +53,34 @@ export default function Dashboard() {
     }
   }
 
- 
-  
   return (
     <>
-      {projectData && projectData.map((e) => {
-    return <li>{e.userId}</li>
-  })}
       <div className="app">
         {error && <Alert variant="danger">{error}</Alert>}
         <Sidebar handleLogout={handleLogout} error={error} />
         <div className="hero">
-          <div className="tab-bar w-100px bg-blue h-100px visible">
+          <div className="tab-bar flex-1 flex-md-row bg-blue text-white justify-content-evenly align-items-center m-2 text-xl ">
             <button
+              className="add-project bg-transparent mx-2 my-2 border-4 border-b-tapue-gray border-r-tapue-gray"
               onClick={() => {
-                setGetProject(true);
+                setAddProject();
               }}
-              className="add-project w-100 bg-yellow h-h-100"
             >
-              hey
+              Add Project
             </button>
-            <button className="update-project"></button>
-            <button className="search-bar"></button>
+            <button
+              className="update-project bg-transparent mx-2 my-2 border-4 border-b-tapue-gray border-r-tapue-gray"
+              onClick={() => {
+                setUpdateProject();
+              }}
+            >
+              Update Project
+            </button>
+
+            <input
+              className="search-bar bg-transparent mx-2 my-2 border-4 border-b-tapue-gray border-r-tapue-gray"
+              placeholder="Search..."
+            ></input>
           </div>
         </div>
         <div className="">

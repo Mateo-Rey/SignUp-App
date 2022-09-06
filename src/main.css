@@ -108,3 +108,7 @@ div.app {
   height: 200px;
   margin: 5px;
 }
+div.tab-bar {
+  width: 600px;
+  height: 100px;
+}
