@@ -8,9 +8,12 @@ import { Project } from "./Project";
 export default function Dashboard() {
   const [error, setError] = useState("");
   const [show, setShow] = useState(false);
+  const [count, setCount] = useState(0)
   const userId = 1;
+  const index = (Math.floor(Math.random()*100000))
+
   const [form, setForm] = useState({})
-  const [newTask, setNewTask] = useState([{id:`${userId}`}]);
+  const [newTask, setNewTask] = useState([{id:`${index}`}]);
   const [projectData, setProjectData] = useState([]);
   const [addProject, setAddProject] = useState();
   const { currentUser, logout } = useAuth();
@@ -31,17 +34,16 @@ export default function Dashboard() {
   async function docAdd() {
     try {
       const results = await fetch(
-        `todo-api-web.web.app/add-project/${userId}`,
+        `https://todo-api-web.web.app/add-project/${userId}`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(),
+          body: JSON.stringify(form), 
         }
       );
-      const data = results.json(addProject);
-      window.location.reload(false);
+      const data = results.json();
       console.log(data);
     } catch (error) {
       console.error(error);
@@ -60,25 +62,29 @@ export default function Dashboard() {
   }
 
   const addTask = () => {
-    console.log('hello')
     
     if (newTask.length < 1) {
-      return setNewTask({id:`${userId}`})
+      return setNewTask({id:`${index}`})
     }else {
-    return setNewTask([...newTask, {id:`${userId}`}]);
+     setCount(count+1)
+    return setNewTask([...newTask, {id:`${index}`}]);
     }
     
   };
+  console.log(count)
 
   const handleChange = (event) => {
     setForm({...form, [event.target.name]: event.target.value })
   }
-  console.log(newTask)
+
+  
+  console.log(form)
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    docAdd(e)
   };
-
+  
   return (
     <>
       <div className="app">
@@ -92,38 +98,36 @@ export default function Dashboard() {
             >
               Add Project
             </button>
-            <Modal show={show} onHide={handleClose}>
+            <Modal className="flex justify-content-evenly align-items-center" show={show} onHide={handleClose}>
               <Modal.Header closeButton>
                 <Modal.Title>Add New Project</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <form onSubmit={handleSubmit}>
+                <form className="flex justify-content-between align-items-flex-start flex-md-column" onSubmit={handleSubmit}>
                   <Form.Group className="mb-3">
-                    <Form.Label>Project Title</Form.Label>
-                    <Form.Control type="text" placeholder="Enter title..." />
-                    <Form.Text className="text-muted">
-                      We'll never share your email with anyone else.
-                    </Form.Text>
+                    <Form.Label className="">Project Title</Form.Label>
+                    <Form.Control onChange={handleChange} name='projTitle' type="text" placeholder="Enter title..." value={form.name} />
                   </Form.Group>
                   {newTask.map(() => {
-                    const index = Math.ceil(Math.random()*10000)
+                    
                     return (
                     <Form.Group>
                     <Form.Label>Project Task</Form.Label>
-                    <Form.Control onChange={handleChange} type="text" value={index} name={index} placeholder="Enter task..." />
+                    <Form.Control onChange={handleChange} type="text" value={form.name} name={'task'+newTask[(0+count)].id} placeholder="Enter task..." />
                   </Form.Group>
                     )
+
                   })}
                   
                   <button
-                    className="mt-3 w-50 bg-blue text-white font-bold py-2 px-4 border-b-4 border-gray-light hover:border-gray rounded-3"
+                    className="mt-3 w-30 bg-blue text-white font-bold py-2 px-4 border-b-4 border-gray-light hover:border-gray rounded-3"
                     onClick={addTask}
                   >
                     Add Task
                   </button>
                   <Form.Group>
-                    <Form.Label>Project Title</Form.Label>
-                    <Form.Control type="text" placeholder="Enter title..." />
+                    <Form.Label>User Id</Form.Label>
+                    <Form.Control onChange={handleChange} value={form.name} name='uuid' type="text" placeholder="Enter email..." />
                     <Form.Text className="text-muted">
                       We'll never share your email with anyone else.
                     </Form.Text>
@@ -132,6 +136,7 @@ export default function Dashboard() {
               </Modal.Body>
               <Modal.Footer>
                 <button onClick={handleClose}>Close</button>
+                <button onClick={handleSubmit}type='submit'>Submit</button>
               </Modal.Footer>
             </Modal>
             <button
@@ -165,4 +170,5 @@ export default function Dashboard() {
       </div>
     </>
   );
+
 }
