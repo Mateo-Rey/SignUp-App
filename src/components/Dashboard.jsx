@@ -174,11 +174,18 @@ export default function Dashboard() {
                   console.log(doc)
                   console.log(doc)
                   return (
+                  <Link to='/project'>
                     <Card className="project-frame border-3 bg-transparent">
+                      
                       <Card.Body className="singular-project leading-7 bg-tapue-gray border-4 border-white">
-                        
+                        <h1>{doc.projectTitle}</h1>
+                        <p>{doc.task0}</p>
+                        <p>{doc.task1}</p>
+                        <p>{doc.task2}</p>
                       </Card.Body>
+                      
                     </Card>
+                    </Link>
                   );
                 })}
             </Card.Body>

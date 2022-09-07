@@ -8,6 +8,7 @@ import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "./ForgotPassword";
 import UpdateProfile from "./UpdateProfile";
+import { Project } from "./Project";
 
 function App() {
   return (
@@ -19,6 +20,14 @@ function App() {
         <Router>
           <AuthProvider>
             <Routes>
+              <Route path='/project'
+              element={
+                <PrivateRoute>
+                  <Project/>
+                </PrivateRoute>
+              }
+              >
+              </Route>
               <Route
                 path="/"
                 element={
