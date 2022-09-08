@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
 body {
     margin: 0;
 
@@ -84,10 +84,10 @@ div.app {
 .project-board {
   text-align: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  align-items: top;
-  justify-content: space-evenly;
+  align-items: center;
+  justify-content: space-between;
   width: 85vw;
   height: 100vh;
   flex-grow: 10;
@@ -99,6 +99,7 @@ div.app {
   display: flex;
   flex-direction: column;
   height: 100px;
+  width: 100px;
   overflow: scroll;
   font-size: small;
 }
@@ -111,4 +112,8 @@ div.app {
 div.tab-bar {
   width: 600px;
   height: 100px;
+}
+
+#projectFullFrame {
+  font-family: 'Karla';
 }
