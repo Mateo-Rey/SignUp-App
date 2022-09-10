@@ -1,16 +1,42 @@
 import { Menu, Transition } from "@headlessui/react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { Fragment } from "react";
 
 export const DropDown = ({task}) => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
+
+  const handleDoneOnClick = () => {
+    
+      localStorage.setItem(`taskState${task}`, "Done");
+    refreshPage()
+  };
+  
+  const handleProgressOnClick = () => {
+   
+      localStorage.setItem(`taskState${task}`, "In Progress");
+    refreshPage()
+  };
+  const handleNotStartedOnClick = () => {
+
+      localStorage.setItem(`taskState${task}`, "Not Started");
+    refreshPage()
+
+  };
+  function refreshPage() {
+    window.location.reload(false);
+  }
+  
   return (
     <>
       <Menu as="div" className="relative inline-block text-left">
         <div className="bg-blue">
           <Menu.Button className="inline-flex text-black justify-center w-full px-4 py-2 text-lg font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-            {localStorage.getItem(`taskState${task}`)}
+            {localStorage.getItem(`taskState${task}`)
+              ? localStorage.getItem(`taskState${task}`)
+              : "Not Started"}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-5 h-5 ml-2 -mr-1"
@@ -42,10 +68,7 @@ export const DropDown = ({task}) => {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                  onClick={() => {
-                    localStorage.setItem(`taskState${task}`, "Not Started")
-                    window.location.reload(false)
-                  }}
+                    onClick={handleNotStartedOnClick}
                     className={classNames(
                       active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                       "block px-4 py-2 text-base"
@@ -58,10 +81,7 @@ export const DropDown = ({task}) => {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                  onClick={() => {
-                    localStorage.setItem(`taskState${task}`, "In Progress")
-                    window.location.reload(false)
-                  }}
+                    onClick={handleProgressOnClick}
                     className={classNames(
                       active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                       "block px-4 py-2 text-base"
@@ -74,10 +94,7 @@ export const DropDown = ({task}) => {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                  onClick={() => {
-                    localStorage.setItem(`taskState${task}`, "Done")
-                    window.location.reload(false)
-                  }}
+                    onClick={handleDoneOnClick}
                     className={classNames(
                       active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                       "block px-4 py-2 text-base"

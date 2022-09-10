@@ -172,19 +172,9 @@ export default function Dashboard() {
                 </button>
               </Modal.Footer>
             </Modal>
-            <button
-              className="update-project bg-transparent mx-2 my-2 border-4 border-b-tapue-gray border-r-tapue-gray"
-              onClick={() => {
-                setUpdateProject();
-              }}
-            >
-              Update Project
-            </button>
+           
 
-            <input
-              className="search-bar bg-transparent mx-2 my-2 border-4 border-b-tapue-gray border-r-tapue-gray"
-              placeholder="Search..."
-            ></input>
+           
           </div>
         </div>
         <div className="">
@@ -215,6 +205,7 @@ export default function Dashboard() {
           </Card>
         </div>
       </div>
+      
     </>
   );
 }

@@ -1,9 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap");
 body {
-    margin: 0;
+  margin: 0;
 
   background-color: rgb(148, 163, 184);
   background-image: radial-gradient(
@@ -78,7 +78,7 @@ div.app {
   padding: 20px;
   margin-top: 150px;
   position: absolute;
-  left: 300px
+  left: 300px;
 }
 
 .project-board {
@@ -115,5 +115,7 @@ div.tab-bar {
 }
 
 #projectFullFrame {
-  font-family: 'Karla';
+  font-family: "Karla";
+  display: flex;
+  flex-direction: row;
 }
