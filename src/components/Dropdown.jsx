@@ -33,7 +33,7 @@ export const DropDown = ({task}) => {
     <>
       <Menu as="div" className="relative inline-block text-left">
         <div className="bg-blue">
-          <Menu.Button className="inline-flex text-black justify-center w-full px-4 py-2 text-lg font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+          <Menu.Button className="inline-flex text-black justify-center w-full px-4 py-2 text-lg font-medium  bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
             {localStorage.getItem(`taskState${task}`)
               ? localStorage.getItem(`taskState${task}`)
               : "Not Started"}

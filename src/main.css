@@ -79,6 +79,7 @@ div.app {
   margin-top: 150px;
   position: absolute;
   left: 300px;
+  bottom: 0;
 }
 
 .project-board {

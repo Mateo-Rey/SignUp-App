@@ -110,13 +110,7 @@ export default function Dashboard() {
         {error && <Alert variant="danger">{error}</Alert>}
         <Sidebar handleLogout={handleLogout} error={error} />
         <div className="hero">
-          <div className="tab-bar flex-1 flex-md-row bg-blue text-white justify-content-evenly align-items-center m-2 text-xl ">
-            <button
-              className="add-project bg-transparent mx-2 my-2 border-4 border-b-tapue-gray border-r-tapue-gray"
-              onClick={handleShow}
-            >
-              Add Project
-            </button>
+          
             <Modal
               className="flex justify-content-evenly align-items-center"
               show={show}
@@ -178,8 +172,14 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="">
-          <Card className="outer-project-frame min-w-max position-absolute bg-blue text-white border-b-4 border-r-4 border-white">
+          <Card className="outer-project-frame min-w-max position-absolute top-0 bg-blue text-white border-b-4 border-r-4 border-white">
             <h2 className="text-xl">Projects</h2>
+            <button
+              className="add-project bg-transparent mx-2 my-2 border-4 border-b-tapue-gray border-r-tapue-gray"
+              onClick={handleShow}
+            >
+              Add Project
+            </button>
             <Card.Body className="project-board min-h-max max-w-5xl flex flex-wrap overflow-hidden">
               {console.log(projectData)}
               {projectData &&
@@ -203,7 +203,7 @@ export default function Dashboard() {
                 })}
             </Card.Body>
           </Card>
-        </div>
+       
       </div>
       
     </>
