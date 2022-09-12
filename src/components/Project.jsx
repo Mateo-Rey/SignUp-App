@@ -20,16 +20,14 @@ export const Project = () => {
   const [projectData, setProjectData] = useState({});
   const [taskState, setTaskState] = useState();
   const [taskStateList, setTaskStateList] = useState([]);
-  const [updatedProjectTitle, setUpdatedProjectTitle] = useState()
-  const [leaderBoard, setLeaderBoard] = useState([])
-  const [userPoints,setUserPoints] = useState()
-  console.log(taskStateList);
+  const [updatedProjectTitle, setUpdatedProjectTitle] = useState();
+  const [leaderBoard, setLeaderBoard] = useState([]);
+  const [userPoints, setUserPoints] = useState();
+  
   const addTask = () => {
     setProjectData([...projectData.taskList, `randomTask`]);
   };
-  console.log(projectId);
-  console.log(projectData.taskList);
-  console.log(form)
+  
 
   const userTaskList = projectData.taskList;
   useEffect(() => {
@@ -37,21 +35,10 @@ export const Project = () => {
       .then((res) => res.json())
       .then((data) => setProjectData(data));
   }, []);
-  console.log(projectData);
-
-  console.log(userTaskList);
-
-  const [numOfTaskComplete, setNumOfTaskComplete] = useState([]);
-
-  console.log(numOfTaskComplete);
-  console.log(form);
-  function refreshPage() {
-    window.location.reload(false);
-  }
-  const handleFinishedTask = () => {
-    setNumOfTaskComplete(numOfTaskComplete + 1);
-  };
-  console.log(userTaskList);
+ 
+  
+ 
+  
   const [taskList, setTaskList] = useState({});
   const handleChange = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
@@ -59,24 +46,15 @@ export const Project = () => {
   const handleTaskChange = (event) => {
     setTaskList({ ...taskList, [event.target.name]: event.target.value });
   };
-  const updateList = new Set(userTaskList)
-  updateList.add(Object.values(taskList))
-  console.log(updateList)
-  const indexSplice = [...Object.keys(taskList)]
-    
-  
-    console.log(userTaskList)
-    
-    console.log(userTaskList)
-    
+
   const handleSubmit = async () => {
     for (const key in taskList) {
-        userTaskList.splice(key)
-        }
-        Object.values(taskList).map((task) => {
-          userTaskList.push(task)
-        })
-   
+      userTaskList.splice(key);
+    }
+    Object.values(taskList).map((task) => {
+      userTaskList.push(task);
+    });
+
     try {
       const results = await fetch(
         `https://todo-api-web.web.app/update-project/${userId}/${projectId}`,
@@ -88,15 +66,13 @@ export const Project = () => {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
           },
-          body: JSON.stringify({"taskList": [...userTaskList]}),
+          body: JSON.stringify({ taskList: [...userTaskList] }),
         }
       );
       const data = results.json();
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
-    
   };
   const handleDeleteShow = () => {
     setDeleteShow(true);
@@ -106,23 +82,20 @@ export const Project = () => {
   };
   const handleDeleteSubmit = async () => {
     try {
-    const results = await fetch(
-      `https://todo-api-web.web.app/delete-project/${userId}/${projectId}`,
-      {
-        method: "DELETE",
-      })
-      const data = results.json()
-      console.log(data)
-      history('/')
-
-    }catch(error) {
-      console.log(error)
+      const results = await fetch(
+        `https://todo-api-web.web.app/delete-project/${userId}/${projectId}`,
+        {
+          method: "DELETE",
+        }
+      );
+      const data = results.json();
+      console.log(data);
+      history("/");
+    } catch (error) {
+      console.log(error);
     }
-
-    
-  }
-  console.log(userTaskList);
-  console.log(taskList);
+  };
+  
   return (
     <>
       <Sidebar />
@@ -157,10 +130,16 @@ export const Project = () => {
                   </p>
                 </div>
                 <div className="flex align-items-center font-bold mt-3 text-lg justify-content-evenly">
-                  <button onClick={handleDeleteClose} className="bg-crimson-red border-2 rounded-md p-2">
+                  <button
+                    onClick={handleDeleteClose}
+                    className="bg-crimson-red border-2 rounded-md p-2"
+                  >
                     Close
                   </button>
-                  <button onClick={handleDeleteSubmit} className="bg-green border-2 rounded-md p-2">
+                  <button
+                    onClick={handleDeleteSubmit}
+                    className="bg-green border-2 rounded-md p-2"
+                  >
                     Submit
                   </button>
                 </div>
@@ -192,7 +171,6 @@ export const Project = () => {
                             onChange={handleChange}
                             name="projectTitle"
                             type="text"
-                            
                             value={form.name}
                             defaultValue={projectData.projectTitle}
                           />

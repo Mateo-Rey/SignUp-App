@@ -24,8 +24,8 @@ export default function Dashboard() {
   const handleShow = () => setShow(true);
   const [projectIds, setProjectIds] = useState([]);
   const [currentProjectId, setCurrentProjectId] = useState("");
-  console.log(currentProjectId);
-  console.log(currentUser.email)
+  
+  const jwtToken = currentUser.getIdToken()
   
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export default function Dashboard() {
         }
       );
       const data = results.json();
-      console.log(data);
+      
       window.location.reload(false);
     } catch (error) {
       console.error(error);
@@ -92,7 +92,7 @@ export default function Dashboard() {
   const handleTaskChange = (event) => {
     setTaskList({ ...taskList, [event.target.name]: event.target.value });
   };
-  console.log(taskList);
+ 
 
   const handleSubmit = (e) => {
     setForm({ [userId]: userId, ...form });
@@ -103,7 +103,7 @@ export default function Dashboard() {
   for (let i = 0; i < projectData.length; i++) {
     projectData[i].projectId = projectIds[i];
   }
-  console.log(form);
+ 
   return (
     <>
       <div className="app">
@@ -181,15 +181,15 @@ export default function Dashboard() {
               Add Project
             </button>
             <Card.Body className="project-board min-h-max max-w-5xl flex flex-wrap overflow-hidden">
-              {console.log(projectData)}
+              
               {projectData &&
                 projectData.map((doc) => {
                   const handleProjectIdChange = () => {
                     localStorage.setItem("projectId", `${doc.projectId}`);
-                    console.log(localStorage);
+                    
                     history("/project");
                   };
-                  console.log(doc.projectId);
+                 
 
                   return (
                     <div>
