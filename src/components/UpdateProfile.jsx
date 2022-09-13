@@ -11,7 +11,7 @@ export default function UpdateProfile() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useNavigate();
-
+  console.log(emailRef)
   function handleSubmit(e) {
     e.preventDefault();
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -28,10 +28,10 @@ export default function UpdateProfile() {
     if (passwordRef.current.value) {
       promises.push(updatePassword(passwordRef.current.value));
     }
-
+    
     Promise.all(promises)
       .then(() => {
-        history("/");
+        history("/login");
       })
       .catch(() => {
         setError("Failed to update account");

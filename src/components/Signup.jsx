@@ -28,8 +28,8 @@ export default function Signup() {
   }
   return (
     <>
-      <Card>
-        <Card.Body className="login-body border-b-4 border-white text-white">
+      <Card className="login-body mt-5 card-container border-b-4 text-white border-white rounded">
+        <Card.Body>
           <h2 className="text-center text-xl mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
