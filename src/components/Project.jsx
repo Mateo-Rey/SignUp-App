@@ -43,12 +43,8 @@ export const Project = () => {
     setTaskList({ ...taskList, [event.target.name]: event.target.value });
   };
 
-  // const cutArray = userTaskList.slice(1);
-  // console.log(cutArray)
-  const index = parseInt(Object.keys(taskList));
-  console.log(index);
-  const value = Object.values(taskList).toString();
-  console.log(value);
+  
+  console.log(form)
   const handleSubmit = async () => {
     if (Object.keys(taskList).length > 1) {
       Object.keys(taskList).map((key) => {
@@ -75,7 +71,7 @@ export const Project = () => {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
           },
-          body: JSON.stringify({ taskList: [...userTaskList] }),
+          body: JSON.stringify({ taskList: [...userTaskList], 'projectTitle': form.projectTitle }),
         }
       );
       const data = results.json();
