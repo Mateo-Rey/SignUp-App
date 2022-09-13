@@ -23,22 +23,18 @@ export const Project = () => {
   const [updatedProjectTitle, setUpdatedProjectTitle] = useState();
   const [leaderBoard, setLeaderBoard] = useState([]);
   const [userPoints, setUserPoints] = useState();
-  
+  let userTaskList = projectData.taskList;
+
   const addTask = () => {
     setProjectData([...projectData.taskList, `randomTask`]);
   };
-  
 
-  const userTaskList = projectData.taskList;
   useEffect(() => {
     fetch(`https://todo-api-web.web.app/projects/${userId}/${projectId}`)
       .then((res) => res.json())
       .then((data) => setProjectData(data));
   }, []);
- 
-  
- 
-  
+
   const [taskList, setTaskList] = useState({});
   const handleChange = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
@@ -47,13 +43,26 @@ export const Project = () => {
     setTaskList({ ...taskList, [event.target.name]: event.target.value });
   };
 
+  // const cutArray = userTaskList.slice(1);
+  // console.log(cutArray)
+  const index = parseInt(Object.keys(taskList));
+  console.log(index);
+  const value = Object.values(taskList).toString();
+  console.log(value);
   const handleSubmit = async () => {
-    for (const key in taskList) {
-      userTaskList.splice(key);
+    if (Object.keys(taskList).length > 1) {
+      Object.keys(taskList).map((key) => {
+        userTaskList.splice(key);
+      });
+
+      Object.values(taskList).map((task) => {
+        userTaskList.push(task);
+      });
+    } else {
+      const index = parseInt(Object.keys(taskList));
+      const value = Object.values(taskList).toString();
+      userTaskList[index] = value;
     }
-    Object.values(taskList).map((task) => {
-      userTaskList.push(task);
-    });
 
     try {
       const results = await fetch(
@@ -70,6 +79,7 @@ export const Project = () => {
         }
       );
       const data = results.json();
+      window.location.reload(false);
     } catch (error) {
       console.log(error);
     }
@@ -89,13 +99,12 @@ export const Project = () => {
         }
       );
       const data = results.json();
-      console.log(data);
       history("/");
     } catch (error) {
       console.log(error);
     }
   };
-  
+
   return (
     <>
       <Sidebar />
