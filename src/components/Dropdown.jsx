@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Fragment } from "react";
 
-export const DropDown = ({task}) => {
+export const DropDown = ({task, setTaskStateList}) => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
@@ -32,7 +32,7 @@ export const DropDown = ({task}) => {
   return (
     <>
       <Menu as="div" className="relative inline-block text-left">
-        <div className="bg-blue">
+        <div>
           <Menu.Button className="inline-flex text-black justify-center w-full px-4 py-2 text-lg font-medium  bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
             {localStorage.getItem(`taskState${task}`)
               ? localStorage.getItem(`taskState${task}`)
@@ -70,7 +70,7 @@ export const DropDown = ({task}) => {
                   <button
                     onClick={handleNotStartedOnClick}
                     className={classNames(
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      active ? "text-gray-900" : "text-gray-700",
                       "block px-4 py-2 text-base"
                     )}
                   >
@@ -83,7 +83,7 @@ export const DropDown = ({task}) => {
                   <button
                     onClick={handleProgressOnClick}
                     className={classNames(
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      active ? "text-gray-900" : "text-gray-700",
                       "block px-4 py-2 text-base"
                     )}
                   >
@@ -96,7 +96,7 @@ export const DropDown = ({task}) => {
                   <button
                     onClick={handleDoneOnClick}
                     className={classNames(
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      active ? "text-gray-900" : "text-gray-700",
                       "block px-4 py-2 text-base"
                     )}
                   >

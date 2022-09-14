@@ -11,23 +11,25 @@ export default function UpdateProfile() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useNavigate();
-  console.log(emailRef)
+  
+  
   function handleSubmit(e) {
+    
+    const promises = [];
     e.preventDefault();
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match");
     }
 
-    const promises = [];
     setLoading(true);
     setError("");
+    
 
     if (emailRef.current.value !== currentUser.email) {
       promises.push(updateEmail(emailRef.current.value));
     }
-    if (passwordRef.current.value) {
-      promises.push(updatePassword(passwordRef.current.value));
-    }
+    {passwordRef.current.value && promises.push(updatePassword(passwordRef.current.value)) }
+      
     
     Promise.all(promises)
       .then(() => {
@@ -67,7 +69,7 @@ export default function UpdateProfile() {
             </Form.Group>
             <button
               disabled={loading}
-              className=" w-100 my-2 bg-blue text-white font-bold py-2 px-4 border-b-4 border-gray-light hover:border-gray rounded-3"
+              className=" w-100 my-3 bg-blue text-white font-bold py-2 px-4 border-b-4 border-gray-light hover:border-gray rounded-3"
               type="submit"
             >
               Update

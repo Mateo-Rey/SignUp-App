@@ -6,6 +6,7 @@ import { DropDown } from "./Dropdown";
 import { Button } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import { Task } from "./Task";
 
 export const Project = () => {
   const { currentUser } = useAuth();
@@ -18,11 +19,6 @@ export const Project = () => {
   const [form, setForm] = useState({});
   const projectId = localStorage.getItem("projectId");
   const [projectData, setProjectData] = useState({});
-  const [taskState, setTaskState] = useState();
-  const [taskStateList, setTaskStateList] = useState([]);
-  const [updatedProjectTitle, setUpdatedProjectTitle] = useState();
-  const [leaderBoard, setLeaderBoard] = useState([]);
-  const [userPoints, setUserPoints] = useState();
   let userTaskList = projectData.taskList;
 
   const addTask = () => {
@@ -43,8 +39,7 @@ export const Project = () => {
     setTaskList({ ...taskList, [event.target.name]: event.target.value });
   };
 
-  
-  console.log(form)
+  console.log(form);
   const handleSubmit = async () => {
     if (Object.keys(taskList).length > 1) {
       Object.keys(taskList).map((key) => {
@@ -71,7 +66,10 @@ export const Project = () => {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
           },
-          body: JSON.stringify({ taskList: [...userTaskList], 'projectTitle': form.projectTitle }),
+          body: JSON.stringify({
+            taskList: [...userTaskList],
+            projectTitle: form.projectTitle,
+          }),
         }
       );
       const data = results.json();
@@ -155,6 +153,7 @@ export const Project = () => {
           {userTaskList &&
             userTaskList.map((task, i) => {
               const taskState = localStorage.getItem(`taskState${task}`);
+
               return (
                 <>
                   <Modal
@@ -205,13 +204,9 @@ export const Project = () => {
                       </button>
                     </Modal.Footer>
                   </Modal>
-                  <div className="p-5 align-items-center justify-content-between text-center w-full border-2 bg-blue my-3">
-                    <p className="text-2xl m-3" key={i}>
-                      {task}
-                    </p>
-
-                    <DropDown task={task} />
-                  </div>
+                 
+                    <Task task={task} i ={i}/>
+          
                 </>
               );
             })}
