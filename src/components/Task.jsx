@@ -15,19 +15,6 @@ export const Task = ({ task, i }) => {
         </div>
       </>
     );
-  } else if (taskState === "Not Started") {
-    return (
-        <>
-        <div className=" justify-content-center align-items-center">
-          <div className="p-5 align-items-center justify-content-between text-center w-full border-2 bg-red my-3">
-            <p className="text-2xl m-3" key={i}>
-              {task}
-            </p>
-            <DropDown task={task} />
-          </div>
-        </div>
-      </>
-    );
   } else if (taskState === "In Progress") {
     return (
       <>
@@ -39,5 +26,16 @@ export const Task = ({ task, i }) => {
         </div>
       </>
     );
-  }
+  } else {
+    return (
+        <>
+        <div className="p-5 align-items-center justify-content-between text-center w-full border-2 bg-red my-3">
+          <p className="text-2xl m-3" key={i}>
+            {task}
+          </p>
+          <DropDown task={task} />
+        </div>
+      </>
+    );
+}
 };
